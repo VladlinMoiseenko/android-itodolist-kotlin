@@ -1,8 +1,11 @@
 package ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.ui.main
 
+import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.models.*
+
 interface MainView {
-//    fun showProgress()
-//    fun hideProgress()
-//    fun setItems(items: List<String>)
-//    fun showMessage(message: String)
+    abstract fun showProgress()
+    abstract fun hideProgress()
+    abstract fun showToast(key: String)
+    abstract fun displayTasks(tasksResponse: TasksModel)
+    abstract fun getAccessToken(): String
 }

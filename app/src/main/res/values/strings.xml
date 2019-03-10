@@ -22,4 +22,5 @@
     <string name="error_retrieving_data">Ошибка получения данных</string>
     <string name="data_response_null">Нет данных для отображения</string>
     <string name="task_deleted">Задача удалена</string>
+    <string name="demo">demo11</string>
 </resources>

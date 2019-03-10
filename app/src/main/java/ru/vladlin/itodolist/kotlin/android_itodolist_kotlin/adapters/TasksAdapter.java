@@ -33,7 +33,6 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ApiHolder> {
 
     private Listener listener;
 
-
     @Override
     public ApiHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.view_main_item,parent,false);

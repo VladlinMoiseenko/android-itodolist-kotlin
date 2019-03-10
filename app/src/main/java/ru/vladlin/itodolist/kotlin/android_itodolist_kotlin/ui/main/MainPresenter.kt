@@ -1,4 +1,4 @@
-package ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.main
+package ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.ui.main
 
 class MainPresenter(var mainView: MainView?, val findItemsInteractor: FindItemsInteractor) {
 

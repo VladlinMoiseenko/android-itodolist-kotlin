@@ -1,4 +1,4 @@
-package ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.main
+package ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.ui.main
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

@@ -3,4 +3,5 @@
 > A android-itodolist project with Kotlin for http://www.vladlin.ru/#/itodolistproject
 
 todo:
-to realize login
+> to realize main; 
+> Реактивное программирование с RxJava и RxKotlin https://code.tutsplus.com/ru/tutorials/kotlin-reactive-programming-with-rxjava-and-rxkotlin--cms-31577

@@ -2,3 +2,5 @@
 
 > A android-itodolist project with Kotlin for http://www.vladlin.ru/#/itodolistproject
 
+todo:
+add kotlin

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import kotlinx.android.synthetic.main.activity_login.*
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.R
+import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.main.MainActivity
 
 class LoginActivity : AppCompatActivity(), LoginView {
 
@@ -44,6 +45,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun navigateToHome() {
-        //startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }

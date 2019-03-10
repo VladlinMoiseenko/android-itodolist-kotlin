@@ -1,12 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="16dp"
     android:gravity="center"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/username"
@@ -28,14 +27,18 @@
         android:hint="@string/password"
         android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/btn_login"
+    <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/log_in" />
+        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/ic_email"
+        android:gravity="center_vertical"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
 
     <Button
-        android:id="@+id/btn_registration"
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/registration" />

@@ -6,45 +6,37 @@
     android:layout_marginTop="16dp"
     android:gravity="center"
     android:orientation="vertical"
-    >
+    tools:context="ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.ui.task.TaskActivity">
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/task_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawablePadding="8dp"
-        android:drawableStart="@drawable/ic_username"
         android:gravity="center_vertical"
-        android:hint="@string/user_name"
+        android:hint="@string/task_title"
         android:inputType="text"/>
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/task_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawablePadding="8dp"
-        android:drawableStart="@drawable/ic_password"
         android:gravity="center_vertical"
-        android:hint="@string/password"
-        android:inputType="textPassword" />
+        android:hint="@string/task_content"
+        android:inputType="text"/>
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/log_in" />
-
-    <Button
-        android:id="@+id/btn_registration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/registration" />
+        android:text="@string/save" />
 
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
         android:visibility="gone" />
 
 </LinearLayout>

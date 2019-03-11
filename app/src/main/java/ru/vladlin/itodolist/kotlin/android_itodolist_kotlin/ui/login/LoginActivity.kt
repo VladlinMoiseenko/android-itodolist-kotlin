@@ -48,9 +48,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     override fun onResume() {
         super.onResume()
-//        if (mSettings!!.contains(APP_PREFERENCES_ACCESS_TOKEN)) {
-//            navigateToMain()
-//        }
+        if (mSettings!!.contains(APP_PREFERENCES_ACCESS_TOKEN)) {
+            navigateToMain()
+        }
     }
 
     override fun saveAccessToken(accessToken: String) {
@@ -85,8 +85,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
     override fun navigateToMain() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
-
-        //Toast.makeText(this, "FOOOOOOOOOOOOOOOOOO", Toast.LENGTH_LONG).show()
     }
 
     override fun navigateToRegistration() {

@@ -17,7 +17,6 @@ class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginIntera
         if (loginView != null) {
             loginView!!.showProgress()
         }
-        Log.d("FOFO", "username " + username + " password " + password)
         loginInteractor.login(username, password, this)
     }
 
@@ -88,7 +87,7 @@ class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginIntera
         return object : DisposableObserver<AccesstokenModel>() {
             override fun onNext(@NonNull response: AccesstokenModel) {
                 val accessToken = response.data.accessToken
-                Log.d("FOFO", "accessToken " + accessToken)
+                //Log.d("FOFO", "accessToken " + accessToken)
                 loginView!!.saveAccessToken(accessToken)
             }
 

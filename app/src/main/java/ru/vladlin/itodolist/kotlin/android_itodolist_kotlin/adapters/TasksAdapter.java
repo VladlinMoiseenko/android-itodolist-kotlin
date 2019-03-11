@@ -49,13 +49,13 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.ApiHolder> {
         holder.tContent.setText(item.getContent());
 
         //convert unix time
-//        long unixSeconds = Long.parseLong(item.getCreatedAt());;
-//        Date date = new java.util.Date(unixSeconds*1000L);
-//        SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
-//        sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+3"));
-//        holder.tCreatedAt.setText(sdf.format(date));
-//
-//        holder.cv.setOnClickListener(v -> listener.onItemClicked(v, item));
+        long unixSeconds = Long.parseLong(item.getCreatedAt());;
+        Date date = new java.util.Date(unixSeconds*1000L);
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
+        sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+3"));
+        holder.tCreatedAt.setText(sdf.format(date));
+
+        holder.cv.setOnClickListener(v -> listener.onItemClicked(v, item));
 
     }
 

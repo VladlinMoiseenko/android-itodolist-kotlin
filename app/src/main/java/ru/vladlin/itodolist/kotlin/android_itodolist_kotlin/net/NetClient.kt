@@ -17,7 +17,6 @@ object NetClient {
 
             retrofit = Retrofit.Builder()
                     .baseUrl("http://apitdlist.vladlin.ru/")
-                    //.baseUrl("http://apitdlist.dev.vladlin.ru/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(okHttpClient)

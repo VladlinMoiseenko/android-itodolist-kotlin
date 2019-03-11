@@ -6,7 +6,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.annotations.NonNull
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
-import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.R
 
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.models.*
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.net.*

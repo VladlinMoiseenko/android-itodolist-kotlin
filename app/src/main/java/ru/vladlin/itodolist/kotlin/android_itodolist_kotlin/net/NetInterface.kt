@@ -12,15 +12,6 @@ import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.models.*
 
 interface NetInterface {
 
-//    @POST("v1/authorize")
-//    abstract fun authorize(@Body credentials: Credentials): Observable<AuthorizeModel>
-//
-//    @GET("v1/task")
-//    abstract fun getTasks(@Header("Authorization") accessToken: String): Observable<TasksModel>
-
-//    @GET("v1/task")
-//    fun getTasks(): Observable<TasksModel>
-
     @POST("v1/register")
     abstract fun register(@Body credentials: Credentials): Observable<ProfileModel>
 
@@ -47,6 +38,5 @@ interface NetInterface {
 
     @PUT("v1/task/update/{id}")
     abstract fun updateTask(@Path("id") taskId: String, @Body taskModel: TaskModel, @Header("Authorization") accessToken: String): Observable<Task>
-
 
 }

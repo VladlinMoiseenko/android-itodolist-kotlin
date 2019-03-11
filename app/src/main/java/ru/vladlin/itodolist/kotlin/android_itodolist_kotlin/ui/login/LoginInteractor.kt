@@ -3,7 +3,6 @@ package ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.ui.login
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.postDelayed
 
 class LoginInteractor {
-
     interface OnLoginFinishedListener {
         fun onUsernameError()
         fun onPasswordError()
@@ -11,7 +10,7 @@ class LoginInteractor {
     }
 
     fun login(username: String, password: String, listener: OnLoginFinishedListener) {
-        postDelayed(2000) {
+        postDelayed(1000) {
             when {
                 username.isEmpty() -> listener.onUsernameError()
                 password.isEmpty() -> listener.onPasswordError()

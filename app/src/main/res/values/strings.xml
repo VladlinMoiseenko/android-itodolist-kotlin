@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">itodolist-kotlin</string>
+    <string name="app_name">iTodoList-Kotlin</string>
     <string name="login_name">Login</string>
     <string name="registration_name">Registration</string>
     <string name="action_settings">Settings</string>

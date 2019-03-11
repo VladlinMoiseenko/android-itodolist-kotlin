@@ -7,17 +7,16 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.R
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.adapters.TasksAdapter
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.models.*
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.ui.login.LoginActivity
+import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.ui.task.TaskActivity
 
 class MainActivity : AppCompatActivity(), MainView {
 
@@ -52,7 +51,6 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_logout -> {
-
                 presenter!!.logout()
 
                 val mSettings = getSharedPreferences("mainSettings", Context.MODE_PRIVATE)
@@ -99,11 +97,9 @@ class MainActivity : AppCompatActivity(), MainView {
             when(it.itemId) {
                 R.id.action_edit -> {
                     updateTask(itemTask)
-                    //showToast("action_edit")
                 }
                 R.id.action_delete -> {
                     deleteTask(itemTask.id)
-                    //showToast("task_deleted")
                 }
             }
             true
@@ -117,15 +113,21 @@ class MainActivity : AppCompatActivity(), MainView {
     internal fun addTask() {
 //        startActivity(Intent(this, TaskActivity::class.java))
 //        finish()
+        val intent = Intent(this, TaskActivity::class.java)
+        intent.putExtra("taskId", "")
+        intent.putExtra("taskTitle", "")
+        intent.putExtra("taskContent", "")
+        startActivity(intent)
+        finish()
     }
 
     internal fun updateTask(itemTask: TaskModel) {
-//        val intent = Intent(this, TaskActivity::class.java)
-//        intent.putExtra("taskId", itemTask.getId())
-//        intent.putExtra("taskTitle", itemTask.getTitle())
-//        intent.putExtra("taskContent", itemTask.getContent())
-//        startActivity(intent)
-//        finish()
+        val intent = Intent(this, TaskActivity::class.java)
+        intent.putExtra("taskId", itemTask.getId())
+        intent.putExtra("taskTitle", itemTask.getTitle())
+        intent.putExtra("taskContent", itemTask.getContent())
+        startActivity(intent)
+        finish()
     }
 
     override fun getAccessToken(): String {

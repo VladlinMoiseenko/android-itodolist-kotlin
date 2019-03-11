@@ -27,12 +27,9 @@ class TaskPresenter (private var taskView: TaskView?, private val taskInteractor
 
     override fun onSuccess(task_title: String, task_content: String) {
         if (taskView != null) {
-
             if (taskView!!.getIdTask() == "") {
-                //getObservableSave(task_title, task_content).subscribeWith<DisposableObserver<Task>>(observerSave)
                 getObservableSave(task_title, task_content).subscribeWith<DisposableObserver<Task>>(getObserverSave())
             } else {
-                //getObservableUpdate(taskView!!.getIdTask(), task_title, task_content).subscribeWith<DisposableObserver<Task>>(observerSave)
                 getObservableUpdate(taskView!!.getIdTask(), task_title, task_content).subscribeWith(getObserverSave())
             }
         }

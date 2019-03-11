@@ -11,6 +11,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.R
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.ui.main.MainActivity
+import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.ui.registration.RegistrationActivity
 
 class LoginActivity : AppCompatActivity(), LoginView {
 
@@ -29,7 +30,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         password = findViewById(R.id.password)
 
         findViewById<View>(R.id.btn_login).setOnClickListener { v -> validateCredentials() }
-//        findViewById<View>(R.id.btn_registration).setOnClickListener({ v -> navigateToRegistration() })
+        findViewById<View>(R.id.btn_registration).setOnClickListener({ v -> navigateToRegistration() })
 
         presenter = LoginPresenter(this, LoginInteractor())
 
@@ -79,8 +80,8 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun navigateToRegistration() {
-//        startActivity(Intent(this, RegistrationActivity::class.java))
-//        finish()
+        startActivity(Intent(this, RegistrationActivity::class.java))
+        finish()
     }
 
     private fun validateCredentials() {

@@ -16,7 +16,6 @@
         android:drawableStart="@drawable/ic_username"
         android:gravity="center_vertical"
         android:hint="@string/user_name"
-        android:text="@string/demo"
         android:inputType="text"/>
 
     <EditText
@@ -27,7 +26,6 @@
         android:drawableStart="@drawable/ic_password"
         android:gravity="center_vertical"
         android:hint="@string/password"
-        android:text="@string/demo"
         android:inputType="textPassword" />
 
     <Button

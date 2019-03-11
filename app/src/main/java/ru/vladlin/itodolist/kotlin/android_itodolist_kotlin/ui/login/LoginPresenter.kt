@@ -47,13 +47,11 @@ class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginIntera
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }
-
     fun getObserverAuthorize(): DisposableObserver<AuthorizeModel> {
         return object : DisposableObserver<AuthorizeModel>() {
 
             override fun onNext(@NonNull response: AuthorizeModel) {
                 val authorizationCode = response.data.authorizationCode
-                Log.d("FOFO", "authorizationCode " + authorizationCode)
                 getToken(authorizationCode)
             }
 

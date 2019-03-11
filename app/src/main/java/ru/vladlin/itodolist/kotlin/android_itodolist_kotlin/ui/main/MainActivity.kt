@@ -111,8 +111,6 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     internal fun addTask() {
-//        startActivity(Intent(this, TaskActivity::class.java))
-//        finish()
         val intent = Intent(this, TaskActivity::class.java)
         intent.putExtra("taskId", "")
         intent.putExtra("taskTitle", "")

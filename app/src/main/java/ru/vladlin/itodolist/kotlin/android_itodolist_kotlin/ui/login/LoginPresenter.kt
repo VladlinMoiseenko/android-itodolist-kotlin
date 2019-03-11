@@ -1,54 +1,23 @@
 package ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.ui.login
 
+import android.util.Log
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.annotations.NonNull
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
+import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.R
 
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.models.*
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.net.*
 
 class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginInteractor) : LoginInteractor.OnLoginFinishedListener {
 
-    val observerAuthorize: DisposableObserver<AuthorizeModel>
-        get() = object : DisposableObserver<AuthorizeModel>() {
-
-            override fun onNext(@NonNull response: AuthorizeModel) {
-                val authorizationCode = response.getData().getAuthorizationCode()
-                getToken(authorizationCode)
-            }
-
-            override fun onError(@NonNull e: Throwable) {
-                loginView!!.hideProgress()
-                loginView!!.showToast("error_retrieving_data")
-            }
-
-            override fun onComplete() {
-                loginView!!.hideProgress()
-            }
-        }
-
-    //e.printStackTrace();
-    val observerToken: DisposableObserver<AccesstokenModel>
-        get() = object : DisposableObserver<AccesstokenModel>() {
-            override fun onNext(@NonNull response: AccesstokenModel) {
-                var accessToken = response.getData().getAccessToken()
-                loginView!!.saveAccessToken(accessToken)
-            }
-
-            override fun onError(@NonNull e: Throwable) {}
-
-            override fun onComplete() {
-                loginView!!.navigateToMain()
-            }
-        }
-
-
     fun validateCredentials(username: String, password: String) {
         if (loginView != null) {
             loginView!!.showProgress()
         }
+        Log.d("FOFO", "username " + username + " password " + password)
         loginInteractor.login(username, password, this)
     }
 
@@ -68,22 +37,43 @@ class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginIntera
 
     override fun onSuccess(username: String, password: String) {
         if (loginView != null) {
-            getObservableAuthorize(username, password).subscribeWith<DisposableObserver<AuthorizeModel>>(observerAuthorize)
+            getObservableAuthorize(username, password).subscribeWith<DisposableObserver<AuthorizeModel>>(getObserverAuthorize())
         }
     }
 
+    // -> authorize
     fun getObservableAuthorize(username: String, password: String): Observable<AuthorizeModel> {
-
         val credentials = Credentials(username, password, null)
-
         return NetClient.getRetrofit().create(NetInterface::class.java)
                 .authorize(credentials)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }
 
+    fun getObserverAuthorize(): DisposableObserver<AuthorizeModel> {
+        return object : DisposableObserver<AuthorizeModel>() {
+
+            override fun onNext(@NonNull response: AuthorizeModel) {
+                val authorizationCode = response.data.authorizationCode
+                Log.d("FOFO", "authorizationCode " + authorizationCode)
+                getToken(authorizationCode)
+            }
+
+            override fun onError(@NonNull e: Throwable) {
+                loginView!!.hideProgress()
+                loginView!!.showToast("error_retrieving_data")
+            }
+
+            override fun onComplete() {
+                loginView!!.hideProgress()
+            }
+        }
+    }
+    // <- authorize
+
+    // -> accesstoken
     private fun getToken(authorizationCode: String) {
-        getObservableToken(authorizationCode).subscribeWith<DisposableObserver<AccesstokenModel>>(observerToken)
+        getObservableToken(authorizationCode).subscribeWith<DisposableObserver<AccesstokenModel>>(getObserverToken())
     }
 
     fun getObservableToken(authorizationCode: String): Observable<AccesstokenModel> {
@@ -94,10 +84,30 @@ class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginIntera
                 .observeOn(AndroidSchedulers.mainThread())
     }
 
+    fun getObserverToken(): DisposableObserver<AccesstokenModel> {
+        return object : DisposableObserver<AccesstokenModel>() {
+            override fun onNext(@NonNull response: AccesstokenModel) {
+                val accessToken = response.data.accessToken
+                Log.d("FOFO", "accessToken " + accessToken)
+                loginView!!.saveAccessToken(accessToken)
+            }
+
+            override fun onError(@NonNull e: Throwable) {
+                //e.printStackTrace();
+            }
+
+            override fun onComplete() {
+                Log.d("FOFO", "navigateToMain")
+                loginView!!.navigateToMain()
+            }
+        }
+    }
+    // <- accesstoken
+
     fun onDestroy() {
         loginView = null
-        observerAuthorize.dispose()
-        observerToken.dispose()
+        getObserverAuthorize().dispose()
+        getObserverToken().dispose()
     }
 
 }

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
@@ -36,7 +37,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         username = findViewById(R.id.username)
         password = findViewById(R.id.password)
 
-//        findViewById<View>(R.id.btn_login).setOnClickListener { v -> validateCredentials() }
+        findViewById<View>(R.id.btn_login).setOnClickListener { v -> validateCredentials() }
 //        findViewById<View>(R.id.btn_registration).setOnClickListener({ v -> navigateToRegistration() })
 
         presenter = LoginPresenter(this, LoginInteractor())
@@ -47,10 +48,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     override fun onResume() {
         super.onResume()
-
-        if (mSettings!!.contains(APP_PREFERENCES_ACCESS_TOKEN)) {
-            navigateToMain()
-        }
+//        if (mSettings!!.contains(APP_PREFERENCES_ACCESS_TOKEN)) {
+//            navigateToMain()
+//        }
     }
 
     override fun saveAccessToken(accessToken: String) {
@@ -85,6 +85,8 @@ class LoginActivity : AppCompatActivity(), LoginView {
     override fun navigateToMain() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
+
+        //Toast.makeText(this, "FOOOOOOOOOOOOOOOOOO", Toast.LENGTH_LONG).show()
     }
 
     override fun navigateToRegistration() {

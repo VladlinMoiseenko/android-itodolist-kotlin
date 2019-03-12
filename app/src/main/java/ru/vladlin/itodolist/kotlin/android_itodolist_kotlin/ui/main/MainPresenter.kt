@@ -15,7 +15,6 @@ class MainPresenter(private var mainView: MainView?) {
         if (mainView != null) {
             mainView!!.showProgress()
         }
-
         viewTasks()
     }
 

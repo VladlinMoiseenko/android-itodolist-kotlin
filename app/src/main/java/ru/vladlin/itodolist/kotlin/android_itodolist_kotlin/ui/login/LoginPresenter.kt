@@ -1,6 +1,5 @@
 package ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.ui.login
 
-import android.util.Log
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.annotations.NonNull
@@ -49,17 +48,14 @@ class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginIntera
     }
     fun getObserverAuthorize(): DisposableObserver<AuthorizeModel> {
         return object : DisposableObserver<AuthorizeModel>() {
-
             override fun onNext(@NonNull response: AuthorizeModel) {
                 val authorizationCode = response.data.authorizationCode
                 getToken(authorizationCode)
             }
-
             override fun onError(@NonNull e: Throwable) {
                 loginView!!.hideProgress()
                 loginView!!.showToast("error_retrieving_data")
             }
-
             override fun onComplete() {
                 loginView!!.hideProgress()
             }
@@ -71,7 +67,6 @@ class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginIntera
     private fun getToken(authorizationCode: String) {
         getObservableToken(authorizationCode).subscribeWith<DisposableObserver<AccesstokenModel>>(getObserverToken())
     }
-
     fun getObservableToken(authorizationCode: String): Observable<AccesstokenModel> {
         val token = Token(authorizationCode)
         return NetClient.getRetrofit().create(NetInterface::class.java)
@@ -79,21 +74,16 @@ class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginIntera
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }
-
     fun getObserverToken(): DisposableObserver<AccesstokenModel> {
         return object : DisposableObserver<AccesstokenModel>() {
             override fun onNext(@NonNull response: AccesstokenModel) {
                 val accessToken = response.data.accessToken
-                //Log.d("FOFO", "accessToken " + accessToken)
                 loginView!!.saveAccessToken(accessToken)
             }
-
             override fun onError(@NonNull e: Throwable) {
                 //e.printStackTrace();
             }
-
             override fun onComplete() {
-                Log.d("FOFO", "navigateToMain")
                 loginView!!.navigateToMain()
             }
         }

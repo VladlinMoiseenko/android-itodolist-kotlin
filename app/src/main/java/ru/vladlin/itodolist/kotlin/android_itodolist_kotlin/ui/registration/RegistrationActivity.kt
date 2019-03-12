@@ -70,12 +70,10 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
     }
 
     override fun saveAccessToken(accessToken: String) {
-        //if (accessToken != null) {
-            val mSettings = getSharedPreferences("mainSettings", Context.MODE_PRIVATE)
-            val editor = mSettings.edit()
-            editor.putString("AccessToken", accessToken)
-            editor.apply()
-        //}
+        val mSettings = getSharedPreferences("mainSettings", Context.MODE_PRIVATE)
+        val editor = mSettings.edit()
+        editor.putString("AccessToken", accessToken)
+        editor.apply()
     }
 
     override fun onDestroy() {

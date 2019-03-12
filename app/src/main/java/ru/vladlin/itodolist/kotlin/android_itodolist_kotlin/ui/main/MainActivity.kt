@@ -12,6 +12,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
+
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.R
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.adapters.TasksAdapter
 import ru.vladlin.itodolist.kotlin.android_itodolist_kotlin.models.*

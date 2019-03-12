@@ -46,11 +46,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun saveAccessToken(accessToken: String) {
-        //if (accessToken != null) {
-            val editor = mSettings!!.edit()
-            editor.putString(APP_PREFERENCES_ACCESS_TOKEN, accessToken)
-            editor.apply()
-       //}
+        val editor = mSettings!!.edit()
+        editor.putString(APP_PREFERENCES_ACCESS_TOKEN, accessToken)
+        editor.apply()
     }
 
     override fun onDestroy() {

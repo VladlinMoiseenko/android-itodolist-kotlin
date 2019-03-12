@@ -2,7 +2,10 @@
 
 > A android-itodolist project with Kotlin for http://www.vladlin.ru/#/itodolistproject
 
-todo:
-проверить на authorize
+## Используются библиотеки:
 
-> Retrofit на Android с Kotlin https://habr.com/ru/post/336034/
+- rxkotlin
+- rxjava
+- rxandroid
+- retrofit
+- gson
